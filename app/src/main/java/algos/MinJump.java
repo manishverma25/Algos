@@ -75,9 +75,14 @@ public class MinJump {
     {
         int[] arr = {2,3,1,0,4}; //  {1, 3, 6, 1, 0, 9};
         int size = arr.length;
+//        System.out.println("Minimum number of" +
+//                " jumps to reach end is " +
+//                minJumps(arr, size));
+
+
         System.out.println("Minimum number of" +
                 " jumps to reach end is " +
-                minJumps(arr, size));
+                minJumps2(arr, size));
 
     }
 
@@ -108,4 +113,9 @@ public class MinJump {
         }
         return jumps[n-1];
     }
+
+
+
+
 }
+

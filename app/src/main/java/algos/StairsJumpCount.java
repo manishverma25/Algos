@@ -49,7 +49,7 @@ public class StairsJumpCount {
             for (int j = 0; j < i; j++) {
                 for (int k = 0; k < jump.length; k++) {
                     if (((j + 1) + jump[k]) == i + 1) {
-                        stairWays[i] = stairWays[i] + stairWays[j] ;  
+                        stairWays[i] = stairWays[i] + stairWays[j] ;
                     }
                 }
             }

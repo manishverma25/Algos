@@ -29,27 +29,27 @@ public class SwapPairLinkedList {
         Node tempNewHead = null;
         if (llist.head != null) {
             Node node = llist.head;
-            Node previousLeft = null;
+            Node previousIterationLeftNode = null;
             while (node != null && node.next != null) {
 
-                Node t1 = node;
-                Node t2 = node.next;
+                Node firstNode = node;
+                Node secondNode = node.next;
                 if (tempNewHead == null) {
-                    tempNewHead = t1.next;
+                    tempNewHead = firstNode.next;
                 }
-                node = t2.next;
-                if (t2.next == null) {
-                    t1.next = null;
+                node = secondNode.next;
+                if (secondNode.next == null) {
+                    firstNode.next = null;
                 }
-                t2.next = t1;
-                if (previousLeft != null) {
-                    previousLeft.next = t2;
+                secondNode.next = firstNode;
+                if (previousIterationLeftNode != null) {
+                    previousIterationLeftNode.next = secondNode;
                 }
-                previousLeft = t1;
+                previousIterationLeftNode = firstNode;
             }
 
             if (node != null) {
-                previousLeft.next = node;
+                previousIterationLeftNode.next = node;
             }
         }
         llist.head = tempNewHead;

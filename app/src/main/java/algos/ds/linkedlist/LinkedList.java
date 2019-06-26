@@ -1,4 +1,4 @@
-package algos.linkedlist;
+package algos.ds.linkedlist;
 
 public class LinkedList {
     Node head;
@@ -24,7 +24,7 @@ public class LinkedList {
             System.out.print(temp.data+" ");
             temp = temp.next;
         }
-        System.out.println(">>> end");
+        System.out.println(" ");
     }
 
     public void pushold(int new_data)

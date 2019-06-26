@@ -1,4 +1,4 @@
-package algos.linkedlist;
+package algos.ds.linkedlist;
 
 public class Node {
     int data;

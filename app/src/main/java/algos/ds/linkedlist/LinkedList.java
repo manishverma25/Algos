@@ -1,5 +1,7 @@
 package algos.ds.linkedlist;
 
+import algos.ds.node.Node;
+
 public class LinkedList {
     Node head;
     Node insertionPoint;

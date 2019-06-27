@@ -1,4 +1,4 @@
-package algos;
+package algos.dp;
 
 public class BuyStock {
     public static void main(String s[]){

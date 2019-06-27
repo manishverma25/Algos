@@ -1,4 +1,4 @@
-package algos;
+package algos.dp;
 class DiceSumDp {
     // Function to calculate total number of ways to achieve given
     // sum with n throws of dice having k faces

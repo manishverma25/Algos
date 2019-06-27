@@ -1,4 +1,4 @@
-package algos;
+package algos.dp;
 
 
 import java.util.Arrays;

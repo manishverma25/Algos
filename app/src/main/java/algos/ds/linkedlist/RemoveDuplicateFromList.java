@@ -17,11 +17,11 @@ public class RemoveDuplicateFromList {
         llist.push(4);
         llist.push(4);
         llist.push(5);
-//        llist.push(6);
+        llist.push(6);
 
         llist.printList();
         System.out.println(" \n after swaping pair wise");
-        removeDuplicateNodes(llist);
+        removeDuplicateNodes2(llist);
         llist.printList();
 
 
@@ -29,49 +29,31 @@ public class RemoveDuplicateFromList {
 
 
     // my approach
-    private static void removeDuplicateNodes(LinkedList llist) {
-
+    private static void removeDuplicateNodes2(LinkedList llist) {
         Node current = llist.head,
-                nextNode = null,
-                prevNode = null;
-        Node startingNodeOfDuplicacy = null, endNodeOfDuplicacy;
-
-        boolean isfoundduplicate = false;
-
-        while (current != null) {
-
-            nextNode = current.next;
+                readNode = current,
+                writeNode = current;
 
 
-            if (nextNode != null) {
-                if (current.data == nextNode.data) {
+        while (readNode != null && writeNode != null) {
 
-                    while (current.data == nextNode.data) {
-
-                        current = current.next;
-                        nextNode = nextNode.next;
-                        isfoundduplicate = true;
-                    }
-                    if (prevNode != null) {
-                        prevNode.next = nextNode;
-                    } else {
-                        //todo check it
-                        llist.head = nextNode;
-                    }
-
-                }
-            }
-
-            if (isfoundduplicate) {
-                isfoundduplicate = false;
+            if (readNode.data == writeNode.data) {
+                readNode = readNode.next;
             } else {
-                prevNode = current;
+                writeNode.next = readNode;
+                writeNode = readNode;
+                readNode = readNode.next;
+
             }
-            current = nextNode;
 
         }
 
+
     }
+
+
+
+
 
 
 

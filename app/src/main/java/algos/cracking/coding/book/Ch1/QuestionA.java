@@ -1,86 +1,111 @@
 package algos.cracking.coding.book.Ch1;
 
 
+import algos.cracking.coding.book.CtCILibrary.AssortedMethods;
 
 public class QuestionA {
 
-    public static boolean oneEditReplace(String s1, String s2) {
-        boolean foundDifference = false;
-        for (int i = 0; i < s1.length(); i++) {
-            if (s1.charAt(i) != s2.charAt(i)) {
-                if (foundDifference) {
-                    return false;
-                }
-
-                foundDifference = true;
-            }
+    public static void nullifyRow(int[][] matrix, int row) {
+        for (int j = 0; j < matrix[0].length; j++) {
+            matrix[row][j] = 0;
         }
-        return true;
     }
 
-    /* Check if you can insert a character into s1 to make s2. */
-    public static boolean oneEditInsert(String s1, String s2) {
-        int index1 = 0;
-        int index2 = 0;
-        while (index2 < s2.length() && index1 < s1.length()) {
-            if (s1.charAt(index1) != s2.charAt(index2)) {
-                if (index1 != index2) {
-                    return false;
-                }
-                index2++;
-            } else {
-                index1++;
-                index2++;
-            }
+    public static void nullifyColumn(int[][] matrix, int col) {
+        for (int i = 0; i < matrix.length; i++) {
+            matrix[i][col] = 0;
         }
-        return true;
     }
 
-    public static boolean oneEditAway2(String first, String second) {
-        /* Length checks. */
-        if (Math.abs(first.length() - second.length()) > 1) {
+    public static void setZeros(int[][] matrix) {
+        boolean rowHasZero = false;
+        boolean colHasZero = false;
+
+        // Check if first row has a zero
+        for (int j = 0; j < matrix[0].length; j++) {
+            if (matrix[0][j] == 0) {
+                rowHasZero = true;
+                break;
+            }
+        }
+
+        // Check if first column has a zero
+        for (int i = 0; i < matrix.length; i++) {
+            if (matrix[i][0] == 0) {
+                colHasZero = true;
+                break;
+            }
+        }
+
+        // Check for zeros in the rest of the array
+        for (int i = 1; i < matrix.length; i++) {
+            for (int j = 1; j < matrix[0].length;j++) {
+                if (matrix[i][j] == 0) {
+                    matrix[i][0] = 0;
+                    matrix[0][j] = 0;
+                }
+            }
+        }
+
+        // Nullify rows based on values in first column
+        for (int i = 1; i < matrix.length; i++) {
+            if (matrix[i][0] == 0) {
+                nullifyRow(matrix, i);
+            }
+        }
+
+        // Nullify columns based on values in first row
+        for (int j = 1; j < matrix[0].length; j++) {
+            if (matrix[0][j] == 0) {
+                nullifyColumn(matrix, j);
+            }
+        }
+
+        // Nullify first row
+        if (rowHasZero) {
+            nullifyRow(matrix, 0);
+        }
+
+        // Nullify first column
+        if (colHasZero) {
+            nullifyColumn(matrix, 0);
+        }
+    }
+
+    public static boolean matricesAreEqual(int[][] m1, int[][] m2) {
+        if (m1.length != m2.length || m1[0].length != m2[0].length) {
             return false;
         }
 
-        /* Get shorter and longer string.*/
-        String s1 = first.length() < second.length() ? first : second;
-        String s2 = first.length() < second.length() ? second : first;
-
-        int index1 = 0;
-        int index2 = 0;
-        boolean foundDifference = false;
-        while (index2 < s2.length() && index1 < s1.length()) {
-            if (s1.charAt(index1) != s2.charAt(index2)) {
-                /* Ensure that this is the first difference found.*/
-                if (foundDifference) return false;
-                foundDifference = true;
-                if (s1.length() == s2.length()) { // On replace, move shorter pointer
-                    index1++;
+        for (int k = 0; k < m1.length; k++) {
+            for (int j = 0; j < m1[0].length; j++) {
+                if (m1[k][j] != m2[k][j]) {
+                    return false;
                 }
-            } else {
-                index1++; // If matching, move shorter pointer
             }
-            index2++; // Always move pointer for longer string
         }
         return true;
     }
 
-    public static boolean oneEditAway(String first, String second) {
-        if (first.length() == second.length()) {
-            return oneEditReplace(first, second);
-        } else if (first.length() + 1 == second.length()) {
-            return oneEditInsert(first, second);
-        } else if (first.length() - 1 == second.length()) {
-            return oneEditInsert(second, first);
+    public static int[][] cloneMatrix(int[][] matrix) {
+        int[][] c = new int[matrix.length][matrix[0].length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                c[i][j] = matrix[i][j];
+            }
         }
-        return false;
+        return c;
     }
 
     public static void main(String[] args) {
-        String a = "pse";
-        String b = "pale";
-        boolean isOneEdit = oneEditAway(a, b);
-        System.out.println(a + ", " + b + ": " + isOneEdit);
+        int[][] matrix =  new  int[ ][]  {{1,2,0,4},{5,6,7,8},{9,10,11,16}} ;
+        AssortedMethods.printMatrix(matrix);
+
+        setZeros(matrix);
+
+        System.out.println();
+
+        AssortedMethods.printMatrix(matrix);
     }
 
 }

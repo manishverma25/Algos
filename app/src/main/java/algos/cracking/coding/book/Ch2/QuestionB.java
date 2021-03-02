@@ -3,82 +3,75 @@ package algos.cracking.coding.book.Ch2;
 import algos.cracking.coding.book.CtCILibrary.LinkedListNode;
 
 public class QuestionB {
-//    public static void deleteDups(LinkedListNode head) {
-//        LinkedListNode current = head;
-//        while (current != null) {
-//            /* Remove all future nodes that have the same value */
-//            LinkedListNode runner = current;
-//            while (runner.next != null) {
-//                if (runner.next.data == current.data) {
-//                    runner.next = runner.next.next;
-//                } else {
-//                    runner = runner.next;
-//                }
-//            }
-//            current = current.next;
-//        }
-//    }
-//
-//    public static void main(String[] args) {
-//        LinkedListNode first = new LinkedListNode(0, null, null); //AssortedMethods.randomLinkedList(1000, 0, 2);
-//        LinkedListNode head = first;
-//        LinkedListNode second = first;
-//        for (int i = 1; i < 8; i++) {
-//            second = new LinkedListNode(i % 2, null, null);
-//            first.setNext(second);
-//            second.setPrevious(first);
-//            first = second;
-//        }
-//        System.out.println(head.printForward());
-//        deleteDups(head);
-//    }
-
-
-
-    public static void deleteDups(LinkedListNode head) {
-        if (head == null) return;
-        LinkedListNode previous = head;
-        LinkedListNode current = previous.next;
-        while (current != null) {
-            // Look backwards for dups, and remove any that you see.
-            LinkedListNode runner = head;
-            while (runner != current) {
-                if (runner.data == current.data) {
-                    LinkedListNode tmp = current.next;
-                    previous.next = tmp;
-                    current = tmp;
-                    /* We know we can't have more than one dup preceding
-                     * our element since it would have been removed
-                     * earlier. */
-                    break;
-                }
-                runner = runner.next;
-            }
-
-            /* If runner == current, then we didn't find any duplicate
-             * elements in the previous for loop.  We then need to
-             * increment current.
-             * If runner != current, then we must have hit the �break�
-             * condition, in which case we found a dup and current has
-             * already been incremented.*/
-            if (runner == current) {
-                previous = current;
-                current = current.next;
-            }
+    public static class Result {
+        public LinkedListNode node;
+        public boolean result;
+        public Result(LinkedListNode n, boolean res) {
+            node = n;
+            result = res;
         }
+    }
+
+    public static Result isPalindromeRecurse(LinkedListNode head, int length) {
+        if (head == null || length <= 0) { // Even number of nodes
+            return new Result(head, true);
+        } else if (length == 1) { // Odd number of nodes
+            return new Result(head.next, true);
+        }
+
+        /* Recurse on sublist. */
+        Result res = isPalindromeRecurse(head.next, length - 2);
+
+        /* If child calls are not a palindrome, pass back up
+         * a failure. */
+        if (!res.result || res.node == null) {
+            return res;
+        }
+
+        /* Check if matches corresponding node on other side. */
+        res.result = (head.data == res.node.data);
+
+        /* Return corresponding node. */
+        res.node = res.node.next;
+
+        return res;
+    }
+
+    public static int lengthOfList(LinkedListNode n) {
+        int size = 0;
+        while (n != null) {
+            size++;
+            n = n.next;
+        }
+        return size;
+    }
+
+    public static boolean isPalindrome(LinkedListNode head) {
+        int length = lengthOfList(head);
+        Result p = isPalindromeRecurse(head, length);
+        return p.result;
     }
 
     public static void main(String[] args) {
-        LinkedListNode first = new LinkedListNode(0, null, null); //AssortedMethods.randomLinkedList(1000, 0, 2);
-        LinkedListNode head = first;
-        LinkedListNode second = first;
-        for (int i = 1; i < 5; i++) {
-            second = new LinkedListNode(i % 2, null, null);
-            first.setNext(second);
-            second.setPrevious(first);
-            first = second;
+        int length = 9;
+        LinkedListNode[] nodes = new LinkedListNode[length];
+//        for (int i = 0; i < length; i++) {
+//            nodes[i] = new LinkedListNode(i >= length / 2 ? length - i - 1 : i, null, null);
+//        }
+
+        for (int i = 0; i < length; i++) {
+            if (i < length - 1) {
+                nodes[i].setNext(nodes[i + 1]);
+            }
+            if (i > 0) {
+                nodes[i].setPrevious(nodes[i - 1]);
+            }
         }
+        //nodes[length - 2].data = 9; // Uncomment to ruin palindrome
+
+        LinkedListNode head = nodes[0];
         System.out.println(head.printForward());
-        deleteDups(head);
+        System.out.println(isPalindrome(head));
     }
+
 }

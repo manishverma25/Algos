@@ -55,9 +55,15 @@ public class QuestionB {
     public static void main(String[] args) {
         int length = 9;
         LinkedListNode[] nodes = new LinkedListNode[length];
-//        for (int i = 0; i < length; i++) {
-//            nodes[i] = new LinkedListNode(i >= length / 2 ? length - i - 1 : i, null, null);
-//        }
+        for (int i = 0; i < length; i++) {
+            nodes[i] = new LinkedListNode(i >= length / 2 ? length - i - 1 : i, null, null);
+        }
+//        nodes[0] = new LinkedListNode(1);
+//        nodes[1] = new LinkedListNode(2);
+//        nodes[2] = new LinkedListNode(3);
+//        nodes[3] = new LinkedListNode(3);
+//        nodes[4] = new LinkedListNode(2);
+//        nodes[5] = new LinkedListNode(1);
 
         for (int i = 0; i < length; i++) {
             if (i < length - 1) {

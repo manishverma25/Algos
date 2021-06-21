@@ -42,15 +42,21 @@ public class QuestionB {
 		while (current != null) {
 			/* Remove all future nodes that have the same value */
 			LinkedListNode runner = current.next;
+			LinkedListNode prev = current;
 			while (runner != null) {
 				if (runner.data == current.data) {
 					LinkedListNode temp= runner.next;
-					runner.prev.next = temp;
-					if(temp != null){
-						temp.prev = runner.prev;
-					}
+//					runner.prev.next = temp;
+					prev.next= temp;
+//					if(temp != null){
+//						temp.prev = runner.prev;
+//					}
 
 				}
+				if (runner.data != current.data) {
+					prev = runner;
+				}
+
 				runner = runner.next;
 			}
 			current = current.next;

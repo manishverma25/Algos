@@ -64,15 +64,28 @@ public class QuestionB {
 		}
 		return value;
 	}	
-	
+//	  7->1->6
+//			  + 5->9->2
+//			  = 2->1->9
+//			  617 + 295 = 912
+//			  617 + 295 = 912
 	public static void main(String[] args) {
-		LinkedListNode lA1 = new LinkedListNode(3, null, null);
-		LinkedListNode lA2 = new LinkedListNode(1, null, lA1);
-		
-		LinkedListNode lB1 = new LinkedListNode(5, null, null);
-		LinkedListNode lB2 = new LinkedListNode(9, null, lB1);
-		LinkedListNode lB3 = new LinkedListNode(1, null, lB2);	
-		
+//		LinkedListNode lA1 = new LinkedListNode(3, null, null);
+//		LinkedListNode lA2 = new LinkedListNode(1, null, lA1);
+//
+//		LinkedListNode lB1 = new LinkedListNode(5, null, null);
+//		LinkedListNode lB2 = new LinkedListNode(9, null, lB1);
+//		LinkedListNode lB3 = new LinkedListNode(1, null, lB2);
+
+		LinkedListNode lA1 = new LinkedListNode(9, null, null);
+		LinkedListNode lA2 = new LinkedListNode(7, null, lA1);
+		LinkedListNode lA3 = new LinkedListNode(9, null, lA2);
+
+		LinkedListNode lB1 = new LinkedListNode(0, null, null);
+		LinkedListNode lB2 = new LinkedListNode(8, null, lB1);
+		LinkedListNode lB3 = new LinkedListNode(9, null, lB2);
+
+
 		LinkedListNode list3 = addLists(lA1, lB1);
 		
 		System.out.println("  " + lA1.printForward());		

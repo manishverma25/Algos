@@ -33,7 +33,7 @@ public class QuestionA {
 	}
 	
 	public static void main(String[] args) {
-		ArrayList<String> list = getPerms("abcde");
+		ArrayList<String> list = getPerms("cde");
 		System.out.println("There are " + list.size() + " permutations.");
 		for (String s : list) {
 			System.out.println(s);

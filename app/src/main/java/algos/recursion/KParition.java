@@ -27,6 +27,10 @@ public class KParition {
                 System.out.println();
             }
             return;
+
+
+
+
         }
         for (int j = 0; j < subsetList.size(); j++) {
             if (subsetList.get(j).size() > 0) {

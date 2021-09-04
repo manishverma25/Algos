@@ -30,7 +30,7 @@ public class KParition {
 
 
 
-            
+
         }
         for (int j = 0; j < subsetList.size(); j++) {
             if (subsetList.get(j).size() > 0) {

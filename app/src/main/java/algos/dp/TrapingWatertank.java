@@ -4,11 +4,12 @@ public class TrapingWatertank {
 
     public static void main(String[] s) {
 
-        int arr[] = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+//        int arr[] = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+        int arr[] = {6,3,5,3,4,0,1};
 
         System.out.println("total  : " + trap(arr));
         int[] towerHeight =   {7,5,2,3}; //{1, 5, 2, 3, 1, 7, 2, 4};
-        System.out.println("height >  " + getMaxRainwaterBetweenTowers(towerHeight));
+        System.out.println("height >  " + getMaxRainwaterBetweenTowers(arr));
     }
 
 

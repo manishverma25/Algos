@@ -1,5 +1,9 @@
 package algos.collectionframework;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.os.MessageQueue;
+
 class LinkedHashMapCustom<K, V> {
 
     private Entry<K,V>[] table;   //Array of Entry.
@@ -293,6 +297,11 @@ class LinkedHashMapCustom<K, V> {
      */
     public void display(){
 
+        Looper l;
+        Handler h;
+        MessageQueue q;
+
+
         Entry<K, V> currentEntry=header;
         while(currentEntry!=null){
             System.out.print("{"+currentEntry.key+"="+currentEntry.value+"}" +" ");
@@ -339,7 +348,7 @@ class LinkedHashMapCustom<K, V> {
         linkedHashMapCustom.display();
 
         System.out.println("\n\nvalue corresponding to key 21 removed: "
-                + linkedHashMapCustom.remove(21));
+                + linkedHashMapCustom.remove(25));
         System.out.println("value corresponding to key 22 removed: "
                 + linkedHashMapCustom.remove(22));
 

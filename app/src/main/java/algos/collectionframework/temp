@@ -1,0 +1,32 @@
+boolean validateStack(int[] push, int[] pop) {
+
+  if(push.legth != pop.length)
+  return false
+
+  Stack<Integeer> stack = new Stack()
+
+  popPos = 0;
+  pushPos = 0;
+  while(pushPos < push.length || popPos < pop.length)
+
+    if(pushPos< push.length){
+      stack.push(arr[pos])
+      pushPos++
+    }
+
+
+    int dataRetrived = stack.peek();
+    if(dataRetrived == pop[popPos]){
+      stack.pop();
+       popPos++
+    }
+
+
+
+  }
+
+
+  return stack.isEmpty;
+
+
+}

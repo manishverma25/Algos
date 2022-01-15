@@ -5,29 +5,32 @@ public class TrapingWatertank {
     public static void main(String[] s) {
 
 //        int arr[] = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
-        int arr[] = {6,3,5,3,4,0,1};
+        int arr[] = {3,3,5,3,4,0,1};
+        int[] towerHeight =   {3,2,1};
 
         System.out.println("total  : " + trap(arr));
-        int[] towerHeight =   {7,5,2,3}; //{1, 5, 2, 3, 1, 7, 2, 4};
-        System.out.println("height >  " + getMaxRainwaterBetweenTowers(arr));
+//        int[] towerHeight =   {7,5,2,3}; //{1, 5, 2, 3, 1, 7, 2, 4};
+        System.out.println("height >  " + getMaxRainwaterBetweenTowers(towerHeight));
+
+
     }
 
 
     public static int trap(int[] A) {
-        int a = 0;
-        int b = A.length - 1;
+        int left = 0;
+        int right = A.length - 1;
         int max = 0;
         int leftmax = 0;
         int rightmax = 0;
-        while (a <= b) {
-            leftmax = Math.max(leftmax, A[a]);
-            rightmax = Math.max(rightmax, A[b]);
+        while (left <= right) {
+            leftmax = Math.max(leftmax, A[left]);
+            rightmax = Math.max(rightmax, A[right]);
             if (leftmax < rightmax) {
-                max += (leftmax - A[a]);       // leftmax is smaller than rightmax, so the (leftmax-A[a]) water can be stored
-                a++;
+                max += (leftmax - A[left]);       // leftmax is smaller than rightmax, so the (leftmax-A[a]) water can be stored
+                left++;
             } else {
-                max += (rightmax - A[b]);
-                b--;
+                max += (rightmax - A[right]);
+                right--;
             }
         }
         return max;

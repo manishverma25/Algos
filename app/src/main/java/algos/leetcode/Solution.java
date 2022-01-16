@@ -3,19 +3,17 @@ package algos.leetcode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 class Solution {
 
     public static void main(String []s){
-        System.out.println(">>>");
-        int [] arr=   {-1,0,1,2,-1,-4};
-        List<List<Integer>> temp =  threeSum(arr);
-        for (int i = 0; i < temp.size(); ++i){
-            List<Integer> list =  temp.get(i );
-            System.out.println("<<<<<<<< ");
-            System.out.println("list "+list);
+//        System.out.println(">>>");
+//        int [] arr=   {-1,0,1,2,-1,-4};
+//        List<List<Integer>> temp =  threeSum(arr);
+//
 
-        }
+
     }
 
     public static List<List<Integer>> threeSum(int[] nums) {
@@ -42,4 +40,9 @@ class Solution {
             }
         }
     }
+
+
+
+
+
 }

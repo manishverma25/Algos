@@ -1,0 +1,25 @@
+I will do that question
+
+
+wishlist to do algo
+
+
+1. permuation of String
+2. sring string from given list basedon given pattern for match
+
+Eg pattern
+Input
+a*b
+Output
+acb
+agb
+
+Input
+a***b
+Output
+annnb
+ancvb
+
+
+
+

@@ -63,17 +63,17 @@ public class SlidingWindowArray {
 //        int arr[] = { 12, 1, 78, 90, 57, 89, 56 };
         int arr[] = { 1,3,-1,-3,5,3,6,7};
         int k = 3;
-//        printMax(arr, arr.length, k);
+        printMax(arr, arr.length, k);
 //       int [] r =  SlidingWindowMaximum (arr,  k);
-//        System.out.print("result : ");
+        System.out.print("result : ");
 //       for(int i = 0;i < r.length; i++){
 //           System.out.print(r[i]);
 //       }
 
-        int arr2[] = { -4,-5,100,-3,4};
-        int max =  maxSubArray (arr2);
-        System.out.print("max : "+max );
-       String testData = "abad";
+//        int arr2[] = { -4,-5,100,-3,4};
+//        int max =  maxSubArray (arr2);
+//        System.out.print("max : "+max );
+//       String testData = "abad";
 //       int maxLen =  lengthOfLongestSubstring(testData);
     }
 
@@ -144,62 +144,6 @@ public class SlidingWindowArray {
         }
 
         return maxSubarray;
-    }
-
-
-    public int[] maxSlidingWindow2(int[] arr, int k) {
-        int insertPos= 0;
-        int n = arr.length;
-        int [] slidingMaxAnswers = new int[arr.length];
-        // The queue will store indexes of
-        // useful elements in every window and it will
-        // maintain decreasing order of values
-        // from front to rear in Qi, i.e.,
-        // arr[Qi.front[]] to arr[Qi.rear()]
-        // are sorted in decreasing order
-        Deque<Integer> Qi = new LinkedList<Integer>();
-        /* Process first k (or first window)
-        elements of array */
-        int i;
-        for (i = 0; i < k; ++i)
-        {
-            // For every element, the previous
-            // smaller elements are useless so
-            // remove them from Qi
-            while (!Qi.isEmpty() && arr[i] >=
-                    arr[Qi.peekLast()])
-
-                // Remove from rear
-                Qi.removeLast();
-
-            // Add new element at rear of queue
-            Qi.addLast(i);
-        }
-        for (; i < n; ++i){
-            // The element at the front of the
-            // queue is the largest element of
-            // previous window, so print it
-//            System.out.print(arr[Qi.peek()] + " ");
-            slidingMaxAnswers[insertPos++] = Qi.peek();
-
-            // Remove the elements which
-            // are out of this window
-            while ((!Qi.isEmpty()) && Qi.peek() <=
-                    i - k)
-                Qi.removeFirst();
-
-            // Remove all elements smaller
-            // than the currently
-            // being added element (remove
-            // useless elements)
-            while ((!Qi.isEmpty()) && arr[i] >=
-                    arr[Qi.peekLast()])
-                Qi.removeLast();
-            // Add current element at the rear of Qi
-            Qi.addLast(i);
-        }
-
-        return slidingMaxAnswers;
     }
 }
 

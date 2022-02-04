@@ -1,7 +1,9 @@
 package algos.collectionframework;
 
 import java.util.Deque;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class SlidingWindow
 {
@@ -73,9 +75,25 @@ public class SlidingWindow
     // Driver code
     public static void main(String[] args)
     {
-        int arr[] = {1,3,-1,-3,5,3,6,7};
+//        int arr[] = {1,3,-1,-3,5,3,6,7};
         int k = 3;
-        printMax(arr, arr.length, k);
+//        printMax(arr, arr.length, k);
+        int arr[] = {0,2,1,5,3,4};
+        System.out.print( "......" + (buildArray(arr)));
+
+
+    }
+
+    public static int[] buildArray(int[] nums) {
+        int n = nums.length;
+        for(int i = 0; i< n; i++) {
+            nums[i] = n* ( nums[nums[i]] % n ) + nums[i];
+        }
+        for(int i = 0; i< n; i++) {
+            nums[i] = nums[i] /n ;
+        }
+
+        return nums;
     }
 }
 

@@ -209,11 +209,6 @@ class Blind75 {
     }
 
 
-
-
-
-
- 
   public class TreeNode {
       int val;
       TreeNode left;
@@ -226,8 +221,5 @@ class Blind75 {
           this.right = right;
       }
   }
-
-
-
 
 }

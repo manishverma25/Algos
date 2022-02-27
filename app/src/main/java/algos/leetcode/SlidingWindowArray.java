@@ -57,24 +57,15 @@ public class SlidingWindowArray {
         System.out.print(arr[Qi.peek()]);
     }
 
-    // Driver code
     public static void main(String[] args)
     {
-//        int arr[] = { 12, 1, 78, 90, 57, 89, 56 };
         int arr[] = { 1,3,-1,-3,5,3,6,7};
         int k = 3;
-        printMax(arr, arr.length, k);
-//       int [] r =  SlidingWindowMaximum (arr,  k);
-        System.out.print("result : ");
-//       for(int i = 0;i < r.length; i++){
-//           System.out.print(r[i]);
-//       }
+//        printMax(arr, arr.length, k);   //       int [] r =  SlidingWindowMaximum (arr,  k);
+        String s = "pwwkew";
 
-//        int arr2[] = { -4,-5,100,-3,4};
-//        int max =  maxSubArray (arr2);
-//        System.out.print("max : "+max );
-//       String testData = "abad";
-//       int maxLen =  lengthOfLongestSubstring(testData);
+//        System.out.print("lengthOfLongestSubstring >>>  : " + lengthOfLongestSubstring(s));
+
     }
 
     public  static  int[] SlidingWindowMaximum(int[] A, int K) {
@@ -102,20 +93,45 @@ public class SlidingWindowArray {
         return output;
     }
 
-//    public static int lengthOfLongestSubstring(String s) {
-//        int n = s.length();
-//
-//        int res = 0;
-//        for (int i = 0; i < n; i++) {
-//            for (int j = i; j < n; j++) {
-//                if (checkRepetition(s, i, j)) {
-//                    res = Math.max(res, j - i + 1);
-//                }
-//            }
-//        }
-//
-//        return res;
-//    }
+    public static int lengthOfLongestSubstring3(String s) {
+        int n = s.length();
+
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                if (checkRepetition(s, i, j)) {
+                    res = Math.max(res, j - i + 1);
+                }
+            }
+        }
+
+        return res;
+    }
+
+
+    public static int lengthOfLongestSubstring(String s) {
+        int[] chars = new int[128];
+
+        int left = 0;
+        int right = 0;
+
+        int res = 0;
+        while (right < s.length()) {
+            char r = s.charAt(right);
+            chars[r]++;
+
+            while (chars[r] > 1) {
+                char l = s.charAt(left);
+                chars[l]--;
+                left++;
+            }
+
+            res = Math.max(res, right - left + 1);
+
+            right++;
+        }
+        return res;
+    }
 
     private static  boolean checkRepetition(String s, int start, int end) {
         int[] chars = new int[128];
@@ -145,6 +161,7 @@ public class SlidingWindowArray {
 
         return maxSubarray;
     }
+
 }
 
 

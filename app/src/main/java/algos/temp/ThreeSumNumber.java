@@ -15,7 +15,8 @@ class ThreeSumNumber {
         int arr[] = new int []{2, 1, 3, 5, 4};
         // int arr2[] = new int []{1,2,3,4,5,6,7,8,9,10};
 
-        ArrayList< ArrayList< Integer>>   result = give2Sum(8,arr);
+//        ArrayList< ArrayList< Integer>>   result = give2Sum(6,arr);
+        ArrayList< ArrayList< Integer>>   result = give3Sum(8,arr);
         System.out.println("result is "+result);
         printoutPut(result);
 
@@ -42,10 +43,12 @@ class ThreeSumNumber {
 
         int excludedArray [] = new int[arr.length];
 
-        for(int i =0; i < arr.length;i++)
+        for(int i = pos+1; i < arr.length;i++)
         {
             if(i != pos){
                 excludedArray[i] = arr[i]  ;
+            }else {
+                excludedArray[i] = -1;
             }
         }
         return excludedArray;
@@ -63,18 +66,20 @@ class ThreeSumNumber {
             ArrayList< ArrayList< Integer>> resulttwoSumList =   give2Sum(sum-arr[i],getExcludeedArray(arr,i));
             if(resulttwoSumList.size()>0 ){
 
-                ArrayList<Integer> list = new ArrayList<>();
-                list.add(arr[i]);
-                for(int listindex= 0;listindex < resulttwoSumList.size();listindex++){
 
+
+                for(int listindex= 0;listindex < resulttwoSumList.size();listindex++){
+                    ArrayList<Integer> list = new ArrayList<>();
+                    list.add(arr[i]);
                     ArrayList< Integer> twoItemList = resulttwoSumList.get(listindex);
 
                     for(int index= 0;index < twoItemList.size();index++){
                         list.add(twoItemList.get(index));
                     }
+                    resultList.add(list);
                 }
 
-                resultList.add(list);
+
             }
             resulttwoSumList.clear();
 
@@ -93,16 +98,18 @@ class ThreeSumNumber {
 
         for(int i =0 ; i < arr.length;i++ ){
 
-            Integer foundData = hashmap.get(arr[i]);
-            if(foundData != null){
-                ArrayList<Integer> list = new ArrayList<>();
-                list.add(foundData);
-                list.add(arr[i]);
+            if(arr[i] > 0){
+                Integer foundData = hashmap.get(arr[i]);
+                if (foundData != null) {
+                    ArrayList<Integer> list = new ArrayList<>();
+                    list.add(foundData);
+                    list.add(arr[i]);
 
-                resultList.add(list );
-                // return new int[]{foundData,arr[i]};
-            }else{
-                hashmap.put(sum-arr[i],arr[i]);
+                    resultList.add(list);
+                    // return new int[]{foundData,arr[i]};
+                } else {
+                    hashmap.put(sum - arr[i], arr[i]);
+                }
             }
 
         }

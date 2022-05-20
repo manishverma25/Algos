@@ -2,7 +2,7 @@ package algos.leetcode.array;
 
 import java.util.List;
 
-public class Test {
+public class HackerRankTestDynamifyInterview {
 
     static  String [] players = {"Louise","Richard"};
 
@@ -50,8 +50,8 @@ public class Test {
             System.out.println(".......NumberFormatException "+  e.getLocalizedMessage());
             e.printStackTrace();
         }
-        9,223,372,036,854,775,807
-        13,174,607,262,084,689,114
+//        9,223,372,036,854,775,807
+//        13,174,607,262,084,689,114
 
     }
 

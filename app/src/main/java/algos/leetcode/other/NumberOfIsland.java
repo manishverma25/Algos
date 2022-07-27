@@ -1,82 +1,89 @@
 package algos.leetcode.other;
 
+import android.util.Pair;
+
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+import algos.cracking.coding.book.Ch3Testing.Q3_03_Stack_of_Plates.Node;
+
 public class NumberOfIsland {
 
-//    static char [][] grid = { {'1','1','1','1','0'},
-//            {'1','1','0','1','0'},
-//            {'1','1','0','0','0'},
-//            {'0','0','0','0','0'}
-//};
-
-//    static char [][] grid = { {'1','1','0','0','0'},
-//            {'1','1','0','0','0'},
-//            {'0','0','1','0','0'},
-//            {'0','0','0','1','1'}
-//    };
-
-    static char [][] grid = { {'1','1','0','0','0'},
-            {'1','1','0','0','0'},
-            {'0','0','1','0','0'},
-            {'0','0','0','1','1'}
+    static char [][] grid = { {'1','1','1'},
+            {'0','1','0'},
+            {'1','1','1'}
     };
 
 
 
 
     public static void main(String []s){
-        printaArrr(grid);
-       int nos = countIsLand();
-
-        System.out.println(" max island  >>>> "+nos );
-        System.out.println("NOw updated array " );
-        printaArrr(grid);
+        numIslands(grid);
     }
 
 
-    public static int countIsLand(  ){
+    static void dfs(char[][] grid, int r, int c) {
+        int nr = grid.length;
+        int nc = grid[0].length;
 
-        int maxNoIsland = 0;
+        if (r < 0 || c < 0 || r >= nr || c >= nc || grid[r][c] == '0') {
+            return;
+        }
 
-        for( int i =0 ; i < grid.length ; i++){
-            char []row = grid[i];
-            System.out.println( );
-            for( int j =0 ; j < row.length ; j++){
+        grid[r][c] = '0';
+        dfs(grid, r - 1, c);
+        dfs(grid, r + 1, c);
+        dfs(grid, r, c - 1);
+        dfs(grid, r, c + 1);
+    }
 
-                boolean isIslandCounterFound = false;
+    public static int numIslands(char[][] grid) {
+        if (grid == null || grid.length == 0) {
+            return 0;
+        }
 
-                if(grid[i][j] == '1'){
-
-                    if(i-1>=0 && grid[i-1][j] != '0'){
-                        grid[i][j] = grid[i-1][j];
-                        isIslandCounterFound = true;
-                    }
-                    if(j-1>=0 && grid[i][j-1] != '0'){
-                        grid[i][j] = grid[i][j-1];
-                        isIslandCounterFound = true;
-                    }
-
-                    if(!isIslandCounterFound){
-                        ++maxNoIsland;
-                        grid[i][j]= (char) (maxNoIsland +'0');
-                    }
-
+        int nr = grid.length;
+        int nc = grid[0].length;
+        int num_islands = 0;
+        for (int r = 0; r < nr; ++r) {
+            for (int c = 0; c < nc; ++c) {
+                if (grid[r][c] == '1') {
+                    ++num_islands;
+                    dfs(grid, r, c);
                 }
             }
-
         }
-        return maxNoIsland;
 
+        return num_islands;
     }
 
-    public static void printaArrr(char [][] grid  ){
-        for( int i =0 ; i < grid.length ; i++){
-            char []row = grid[i];
-            System.out.println( );
-            for( int j =0 ; j < row.length ; j++){
-                System.out.print( grid[i][j]);
-            }
 
+
+
+    static  public int maxDepth(Node root) {
+        Queue<Pair<Node, Integer>> stack = new LinkedList<>();
+        if (root != null) {
+            stack.add(new Pair(root, 1));
         }
+
+        int depth = 0;
+        while (!stack.isEmpty()) {
+//            Pair<Node, Integer> current = stack.poll();
+//            root = current.getKey();
+//            int current_depth = current.getValue();
+//            if (root != null) {
+//                depth = Math.max(depth, current_depth);
+//                for (Node c : root.children) {
+//                    stack.add(new Pair(c, current_depth + 1));
+//                }
+//            }
+        }
+//        List<Integer> heights = new LinkedList<>();
+//
+//        return Collections.max(heights) + 1;
+        return depth;
     }
 
 

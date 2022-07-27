@@ -2,15 +2,13 @@ package algos.leetcode;
 
 public class LongestPalindrome {
 
-
     public static void main(String [] s){
-
-        String data = "abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababa";
+//        String data = "abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababa";
+        String data = "abba";
 //        String data = "cbbd"; //"ac" , "a;
-
 //       String r=  longestPalindrome(data);
        String r=  longestPalidromeStringDP(data);
-       System.out.print(">>>> length  "+ (r.length()) +"ln longestPalindrome "+r);
+       System.out.print(">>>> length  "+ (r.length()) +"   , longestPalindrome "+r);
 
     }
 
@@ -20,7 +18,8 @@ public class LongestPalindrome {
         int [][] dpLPS = new int [s.length()][s.length()];
         int solutionRow  = 0;
         int solutionCol  = 0;
-        String longestPalidromeStr = "";
+//        String longestPalidromeStr = "";
+        String longestPalidromeStr = String.valueOf(s.charAt(0));
 
        int i =0;int j = 0;
         if(s.length() == 1){
@@ -42,7 +41,6 @@ public class LongestPalindrome {
                 if(left == rght ){ // 1
                     System.out.println(" left : "+left+ " rght: "+ rght);
                     if( dpLPS[row+1][col-1] > 0){
-
                         if(subRow <= subcol ){
                             dpLPS[row][col]   =  dpLPS[row+1][col-1] +2;
                             System.out.println(" inside   dpLPS[row+1][col-1]  : "+dpLPS[row+1][col-1]  +" row "+row+ "col :"+col + "  longestPalidromeStr :"+longestPalidromeStr);
@@ -64,8 +62,7 @@ public class LongestPalindrome {
                             System.out.println(" updating longestPalidromeStr  : "+longestPalidromeStr  +" row "+row+ "col :"+col);
                         }
                     }
-                }// 1
-               else if(s.substring(row,row+1).length() == 1 && s.substring(row,row+1).length() > longestPalidromeStr.length() ){
+                }  else if(s.substring(row,row+1).length() == 1 && s.substring(row,row+1).length() > longestPalidromeStr.length() ){
                     longestPalidromeStr =  s.substring(row,row+1);
                 }
 
@@ -74,14 +71,6 @@ public class LongestPalindrome {
         System.out.println(" final  longestPalidromeStr  : "+longestPalidromeStr  +" solutionRow "+solutionRow+ " solutionCol  :"+solutionCol);
         return longestPalidromeStr;
     }
-
-
-
-
-
-
-
-
 
 
 

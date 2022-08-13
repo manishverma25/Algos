@@ -1,8 +1,4 @@
-package algos.leetcode.scaler.Array;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+package algos.leetcode.interviewbit.Array;
 
 public class ArrayTemp {
     public static void main(String st[]){

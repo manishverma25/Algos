@@ -1,4 +1,4 @@
-package algos.leetcode.scaler;
+package algos.leetcode.interviewbit;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;

@@ -1,10 +1,7 @@
-package algos.leetcode.scaler.Array;
+package algos.leetcode.interviewbit.Array;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class MaxSumSubArray {
 
@@ -24,15 +21,53 @@ public class MaxSumSubArray {
 
 
 //        ArrayList<Integer> resArr = maxset2( inputList );
-        int [] resArr = flip( "1101010001" ); //"1101010001"
-//        System.out.println("maxSubArray  " +maxSubArray(A) );
-        System.out.println("Final res  " +resArr );
+//        int [] resArr = flip( "1101010001" ); //"1101010001"
+////        System.out.println("maxSubArray  " +maxSubArray(A) );
+//        System.out.println("Final res  " +resArr );
+//
+//        for(int i=0;i< resArr.length;i++){
+//            System.out.print("   "+resArr [i]+"  ");
+//        }
 
-        for(int i=0;i< resArr.length;i++){
-            System.out.print("   "+resArr [i]+"  ");
+        solve(new int[][] {{1,2,3,4},{5,6,7,8}});
+
+
+    }
+
+
+    public static  int solve(int[][] A) {
+
+        int B[][] = new int[][] {{1,2,3,4},{5,6,7,8}};
+
+
+        int row1 = B.length;
+        int col1 = B[0].length;
+        System.out.print("  row1  "+ row1 +" col1  "+col1);
+        int sum =0;
+
+        int row = A.length;
+
+        for(int i =0;i < row;i++){
+            int col = A[0].length;
+            for(int j = 0; j < col ; j++)
+            {
+                sum+= A[i][j]*(col-j+1)*(row-i+1)  * (i+1)*(j+1);
+            }
         }
 
-
+        return sum;
+    }
+    public int solve(ArrayList<ArrayList<Integer>> A) {
+        int n = A.size();
+        int sum = 0;
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                // Number of sub matrices contain A[i][j]
+                int times = (i + 1) * (j + 1) * (n - i) * (n - j);
+                sum += times * A.get(i).get(j);
+            }
+        }
+        return sum;
     }
 
     public static ArrayList<Integer> maxset2(List<Integer> a) {
@@ -72,6 +107,11 @@ public class MaxSumSubArray {
 
         return fSum;
     }
+
+
+
+
+
 
     // flip bit for max one's
     public static int [] flip(String a) {

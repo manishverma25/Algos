@@ -1,4 +1,4 @@
-package algos.leetcode.scaler.Array;
+package algos.leetcode.interviewbit.Array;
 
 import java.util.HashMap;
 

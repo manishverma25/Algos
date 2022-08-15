@@ -21,8 +21,6 @@ public class Matrix3 {
 //
 //        Interval br =new Interval(2,11);
 
-
-
 //        ArrayList<Interval> ar =new ArrayList<>();
 ////        ar.add(new Interval(1,3));
 //        ar.add(new Interval(7,10));
@@ -34,12 +32,21 @@ public class Matrix3 {
 
 
         ArrayList<Interval> ar =new ArrayList<>();
-//        ar.add(new Interval(1,3));
-        ar.add(new Interval(1,2));
-        ar.add(new Interval(3,6));
-//        ar.add(new Interval(8,10));
+////        ar.add(new Interval(1,3));
+//        ar.add(new Interval(1,2));
+//        ar.add(new Interval(3,6));
+////        ar.add(new Interval(8,10));
+//
+//        Interval br =new Interval(10,8);
 
-        Interval br =new Interval(10,8);
+
+
+
+        ar.add(new Interval(1,3));
+        ar.add(new Interval(5,7));
+        ar.add(new Interval(9,11));
+
+        Interval br =new Interval(2,10);
 
         ArrayList<Interval> resArr = insert(ar,br);
 //        System.out.println(" r :  " +resArr);
@@ -68,7 +75,7 @@ public class Matrix3 {
                     result.add(intervals .get(index));
                     index++;
                 }
-            }else  if(newInterval.end <=  interval.end && newInterval.start <=  interval.start && newInterval.end !=   interval.start ){  //2
+            }else  if(newInterval.end <=  interval.end && newInterval.start >=  interval.start  ){  //2
                 isnewIntervalUsed = true;
                 while(index <  intervals.size()){
                     result.add(intervals .get(index));

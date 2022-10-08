@@ -50,6 +50,9 @@ public class prime {
         return (int) res;
     }
 
+
+    // system.out.print
+
     public int pow(int A, int B, int C) {
         int r =1;
         if(A== 0){
